@@ -1,0 +1,40 @@
+button:disabled {
+  cursor: not-allowed;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+
+.btn {
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.container {
+  width: 90vw;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+* {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Links */
+
+a, a:link, a:visited  {
+    text-decoration: none;
+}
+
+a:hover  {
+    text-decoration: none;
+}
