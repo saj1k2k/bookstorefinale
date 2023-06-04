@@ -1,6 +1,6 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import {Error, Home, Profile, Register, SharedLayout} from './pages'
+import {Error, Home, Profile, Register, SharedLayout, Product} from './pages'
 
 
 function App() {
@@ -16,6 +16,8 @@ function App() {
 
             <Route index element={<Home />} />
             <Route path='profile' element={<Profile />} />
+            <Route path="/product/:isbn13" element={<Product />} />
+
           </Route>
 
           <Route path='*' element={<Error />} />

@@ -1,41 +1,39 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
+import { useSelector, useDispatch } from 'react-redux';
 import Button from '@mui/material/Button';
+import s from '../assets/css/OneBook.module.css'
+import { Link } from 'react-router-dom';
 
-const OneBooks = () => {
+const OneBooks = ({price, image, title, isbn13}) => {
 
-    const [value, setValue] = React.useState(2);
-  return (
-    <div>
-        <img src="2978981.jpg" alt="" />
-        <div className="">
-            <span>500$</span>
-            <p></p>
-            <p></p>
-        </div>
-        <div className="">
-                <Box
-                    sx={{
-                        '& > legend': { mt: 2 },
-                    }}
-                    >
-                    <Rating
-                        name="simple-controlled"
-                        value={value}
-                        onChange={(event, newValue) => {
-                        setValue(newValue);
-                        }}
-                    />
 
-                </Box>
+
+
+    return (
+        <div className={s.bookWrapper}>
+            <div className="card-top">
+                <img src={image} alt="" />
+            </div>
+            
+            <div className="card-bottom">
+                <div className="">
+                        <span>{price}</span>
+                        <p>{title}</p>
+                </div>
+                <div className={s.buttonsWrapper}>
+                    <Link to={`/product/${isbn13}`} className="btn btn-dark m-1">
+                        <Button variant="contained">
+                                Buy Now
+                        </Button>
+                    </Link>
+
+                    <Button variant="outlined">CART</Button>
+
+                </div>
+            </div>
+                
         </div>
-        <div className="">
-            <Button variant="contained">КУПИТЬ</Button>
-        </div>
-    </div>
-  )
+    )
 }
 
 export default OneBooks

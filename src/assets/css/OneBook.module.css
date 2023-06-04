@@ -1,0 +1,9 @@
+.wrap{
+    margin: 10px;
+    margin-bottom: 20px;
+    max-width: 300px;
+}
+.buttonsWrapper{
+    display: flex;
+
+}

@@ -5,35 +5,64 @@ import Button from '@mui/material/Button';
 import s from '../assets/css/BooksLine.module.css'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 import OneBooks from './OneBooks';
-const BooksLine = () => {
-  return (
-    <>
-        <div className={s.cardWrapper}>
-            <h3>НАЗВАНИЕ КАТЕГОРИИ</h3>
-            <ButtonGroup
-                disableElevation
-                variant="contained"
-                aria-label="Disabled elevation buttons"
-                >
-                <Button>
-                    <ArrowBackIcon/> 
-                </Button>
-                <Button>
-                    <ArrowForwardIcon/>
-                </Button>
-            </ButtonGroup>
-        </div>
+import { useSelector } from 'react-redux';
 
-        <div className="">
-            <OneBooks/>
-            <OneBooks/>
-            <OneBooks/>
-        </div>
-    </>
-    
-  )
+
+const BooksLine = () => {
+    const settings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              initialSlide: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      };
+
+    const books = useSelector(store => store.books.books)
+    return (
+        
+        <div>
+        <h2>Новинки</h2>
+        <Slider {...settings}>
+            {books.map((book) => (
+                <OneBooks 
+                key={book.isbn13}
+                {...book}
+                />
+                ))}
+        </Slider>
+    </div> 
+    )
 }
 
 export default BooksLine
