@@ -19,14 +19,12 @@ const Home = () => {
   }
 
   return (
-
-
-
-
     <>
     <div className={s.main}>
-      
-        <BooksLine/>
+        <BooksLine title='Новинки'/>
+        <BooksLine title='Жанровые'/>
+        <BooksLine title='Python'/>
+        <BooksLine title='JavaScript'/>
     </div>
     </>
   )

@@ -16,6 +16,9 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { ShoppingBag } from '@mui/icons-material';
+import { setSidebarOn, getSidebarStatus } from '../redux/sidebarSlice';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -154,22 +157,27 @@ export default function PrimarySearchAppBar() {
       </MenuItem>
     </Menu>
   );
+  
+
+  const temp = useSelector(getSidebarStatus)
+
+  const dispatch = useDispatch()
+  console.log(temp);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-
-
         <Toolbar>
           {/* МЕНЮ BUTTON */}
           <IconButton
+            onClick={() => dispatch(setSidebarOn())}
             size="large"
             edge="start"
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            <MenuIcon  />
           </IconButton>
 
           {/* НАЗВАНИЕ */}
@@ -181,7 +189,6 @@ export default function PrimarySearchAppBar() {
           >
               NAME
           </Typography>
-
 
           {/* ПОИСК */}
           <Search>

@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import s from '../assets/css/OneBook.module.css'
 import { Link } from 'react-router-dom';
 
+
+
 const OneBooks = ({price, image, title, isbn13}) => {
 
 
@@ -12,12 +14,12 @@ const OneBooks = ({price, image, title, isbn13}) => {
     return (
         <div className={s.bookWrapper}>
             <div className="card-top">
-                <img src={image} alt="" />
+                <img src={image} alt={title} />
             </div>
             
             <div className="card-bottom">
                 <div className="">
-                        <span>{price}</span>
+                        <span className='text-blue-300'>{price}</span>
                         <p>{title}</p>
                 </div>
                 <div className={s.buttonsWrapper}>

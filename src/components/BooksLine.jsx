@@ -12,7 +12,7 @@ import OneBooks from './OneBooks';
 import { useSelector } from 'react-redux';
 
 
-const BooksLine = () => {
+const BooksLine = ({title}) => {
     const settings = {
         dots: true,
         infinite: false,
@@ -51,9 +51,9 @@ const BooksLine = () => {
     const books = useSelector(store => store.books.books)
     return (
         
-        <div>
-        <h2>Новинки</h2>
-        <Slider {...settings}>
+    <div className={s.container}>
+        <h2 >{title}</h2>
+        <Slider {...settings} >
             {books.map((book) => (
                 <OneBooks 
                 key={book.isbn13}
